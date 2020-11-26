@@ -59,7 +59,10 @@
 
 /* Display outline on focus */
 :focus {
-	color: $linkDefault;
-	box-shadow: 0;
-	outline: rgba(0,0,0,.2) solid 2px;
+	outline: thin dotted;
+}
+
+[data-whatintent='mouse'] *:focus, 
+[data-whatintent='touch'] *:focus {
+    outline: none;
 }

@@ -96,10 +96,19 @@
 
 	&__list{
 		display:flex;
+		justify-content: space-between;
+
+		@media (min-width: 400px){
+			justify-content: flex-start;
+		}
 	}
 
 	&__list-item{
-		margin: 0 30px 0 0;
+		margin:0;
+		
+		@media (min-width: 400px){
+			margin: 0 30px 0 0;
+		}
 	}
 }
 
@@ -379,6 +388,7 @@
 	&__list-item {
 		display:flex;
 		width: 47%;
+		margin-bottom: 4%;
 	}
 
 	&__title{
@@ -425,10 +435,14 @@
 .cta-1 {
 	display: block;
 	background-color: white;
-	padding: 15px 24px;
+	padding: 4vw 5vw;
 	text-transform: uppercase;
 	font-weight:700;
 	font-size: 0.7rem;
+
+	@media (min-width: 400px){
+		padding: 15px 24px;
+	}
 }
 
 .cta-2 {
@@ -606,21 +620,22 @@
 .icon {
 	position: relative;
 	overflow:hidden;
-	width:40px;
-	height: 40px;
+	width:50px;
+	height: 50px;
 	border: 3px solid;
 	border-radius: 50%;
-	margin-right:10px;
+	margin-right:5px;
 	font-size: 25px;
 	color: white;
 	vertical-align: middle;
 
 	&:before{
 		display:block;
-		width:40px;
-		height: 40px;
-		text-align: center;
-		margin: 4px 0 0 -2px;
+		width:50px;
+		height: 50px;
+		line-height: 44px;
+    	margin-left: -4px;
+    	text-align: center;
 	}			
 }
 

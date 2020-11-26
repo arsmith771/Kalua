@@ -133,6 +133,10 @@ h1 {
 
 	.home & {
 		max-width:60%;
+
+		@media (max-width: 768px){
+			max-width:80%;
+		}
 	}
 }
 
@@ -183,7 +187,7 @@ h6 {
     			height: 4vw;
     		}
 
-    		@media (min-width: 1920px){
+    		@media (min-width: 2188px) {
     			width: 278px;
     			height: 116px;
     		}
@@ -194,7 +198,7 @@ h6 {
 			width: calc($h1 / 2);
 			
 
-			@media (min-width: 1920px){
+			@media (min-width: 2188px) {
     			width: $w1;
     		}
 		}

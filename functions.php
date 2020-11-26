@@ -80,6 +80,9 @@ function kalua_load_assets() {
 	// Load Slick JS.
 	wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/build/js/slick.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 
+	// Load whatinput JS.
+	wp_enqueue_script( 'whatinput-js', get_stylesheet_directory_uri() . '/build/js/what-input.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+
 	// Load default icons.
 	wp_enqueue_style( 'dashicons' );
 

@@ -9,7 +9,7 @@ html {
     box-sizing: border-box;
     font-size: calc(16px + 0.8vw);
 
-    @media (min-width: 1920px){
+   	@media (min-width: 2188px) {
 		font-size: calc(16px + 19.2px);
 	}
 }
