@@ -1,0 +1,16 @@
+$break-large:  '1200px' !default;
+$break-medium: '768px'  !default;
+$break-small:  '600px'  !default;
+$responsive-menu-break: $break-large !default;
+
+$bar-width: 40px;
+$bar-height: 4px;
+$bar-spacing: 10px;
+
+$bar-width2: 60px;
+$bar-height2: 8px;
+$bar-spacing2: 14px;
+
+$h1: 70px;
+$h2: calc(100vh - $h1);
+$w1: $h1 * 2.67;

@@ -1,0 +1,28 @@
+/*!
+	Theme Name: kalua
+
+	Template: genesis
+*/
+
+@import 'mixins/bourbon/_bourbon';
+@import 'variables/var-units';
+@import 'variables/var-type';
+@import 'variables/var-color';
+
+@import 'partials/reset';
+@import 'partials/structures';
+@import 'partials/defaults';
+@import 'partials/type';
+@import 'partials/objects';
+@import 'partials/tables';
+@import 'partials/forms';
+@import 'partials/accessibility';
+@import 'partials/wordpress';
+@import 'partials/navigation';
+@import 'partials/content';
+@import 'partials/sidebars';
+@import 'partials/widgets';
+@import 'partials/genesis';
+@import 'partials/plugins';
+@import 'partials/genesis';
+@import 'partials/footer';
