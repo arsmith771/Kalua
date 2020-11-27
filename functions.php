@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.5' );
+define( 'CHILD_THEME_VERSION', '0.52' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -49,6 +49,7 @@ include_once( get_template_directory() . '/lib/init.php');
 
 //------------------------- Image sizes -------------
 add_image_size( 'thumb-1', 280, 230, true ); // width, height, crop
+add_image_size( 'banner-mobile', 820, 820, true ); // width, height, crop
 /*
 add_image_size( 'thumb-1', 400, 300, true ); // width, height, crop
 add_image_size( 'thumb-2', 580, 318, true ); // width, height, crop
@@ -186,8 +187,13 @@ add_action( 'genesis_header', 'genesis_do_nav' );
 // Contact details
 add_action('genesis_header', 'contact_details', 11 );
 function contact_details(){
+	    
+	$str = types_render_field( 'telehone-number', array("id" => "15") );  
+	    
+	// remove all whitespaces   
+	$str = str_ireplace (' ', '', $str); 
 
-	echo '<address class="site-header__contact" id="site-header__contact"><a href="tel:' . types_render_field( 'telehone-number', array("id" => "15") ) . '">' . types_render_field( 'telehone-number', array("id" => "15") ) . '</a>' . types_render_field( 'email-address', array("id" => "15") ) . '</address>';
+	echo '<address class="site-header__contact" id="site-header__contact"><a href="tel:' . $str . '">' . types_render_field( 'telehone-number', array("id" => "15") ) . '</a>' . types_render_field( 'email-address', array("id" => "15") ) . '</address>';
 }
 
 // Hamburger
@@ -201,11 +207,6 @@ function menu_toggle_btn(){
 // ------------------------------- Homepage --------------------------------------------
 
 // Remove the entry title
-if ( is_page_template( 'templates/homepage.php') ){
-
-	remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-}
-
 add_action( 'get_header', 'remove_titles_homepage' );
 function remove_titles_homepage() {
 
@@ -215,13 +216,24 @@ function remove_titles_homepage() {
     }
 }
 
+// Add style tag for banner image
+add_action( 'wp_head', 'banner_image_home' );
+function banner_image_home() {
+
+	 if ( is_page_template( 'templates/homepage.php') ){
+
+	    echo '<style>.intro-home {background-image: url(' . types_render_field( 'hero-image-home', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .intro-home {background-image: url(' . types_render_field( 'hero-image-home', array("url" => "true") ) . ');}}</style>';
+	}
+}
+
+
 // Intro section
 add_action('genesis_entry_content', 'intro_homepage', 10 );
 function intro_homepage(){
 
 	if ( is_page_template( 'templates/homepage.php') ){
 
-		echo '<section class="intro-home row" style="background-image: url(https://kalua.local/wp-content/themes/kalua/images/headphones-cover.jpg)"><div class="wrap">';
+		echo '<section class="intro-home row"><div class="wrap">';
 
 			echo '<h1 class="intro-home__title"><span>' . types_render_field( 'intro-header-1-home', array() ) . '</span> ' . types_render_field( 'intro-header-2-home', array() ) . '</h1>';
 
@@ -239,7 +251,7 @@ function client_carousel_homepage(){
 
 	if ( is_page_template( 'templates/homepage.php') ){
 
-		echo '<section class="client-logos row row--2"><div class="wrap"><p class="client-logos__intro">Where you&apos;ll hear our work</p>' . do_shortcode('[wpv-view name="client-carousel"]') . '</div></section>';
+		echo '<section class="client-logos row row--3"><div class="wrap"><p class="client-logos__intro">Where you&apos;ll hear our work</p>' . do_shortcode('[wpv-view name="client-carousel"]') . '</div></section>';
 
 	}
 }
@@ -262,7 +274,7 @@ function what_we_do_homepage(){
 
 			echo do_shortcode('[wpv-view name="service-blocks"]');
 
-			echo '<p class="what-we-do__listen"><a href="#" class="what-we-do__listen__cta" target="_blank">Listen to our work <i class="fab fa-soundcloud"></i></a></p>';
+			echo '<p class="what-we-do__listen"><a href="https://soundcloud.com/kaluastudios" class="what-we-do__listen__cta" target="_blank">Listen to our work&nbsp;&nbsp;<i class="fab fa-soundcloud icon icon--2"></i></a></p>';
 
 		echo '</div></section>'; 
 	}
@@ -283,7 +295,7 @@ function who_we_work_with_homepage(){
 
 			echo '<div class="who-we-work-with__list-container">' . do_shortcode('[wpv-view name="client-list"]') . '</div>';
 
-			echo '<p><a href="#get-in-touch" class="cta-3">Get in touch</a></p>';
+			echo '<p><a href="#get-in-touch" class="cta-2">Get in touch</a></p>';
 
 		echo '</div></section>'; 
 	}
@@ -340,7 +352,7 @@ function client_carousel_radio(){
 
 	if ( is_page_template( 'templates/radio.php') ){
 
-		echo '<section class="client-logos row row--2"><div class="wrap">' . do_shortcode('[wpv-view name="client-carousel"]') . '</div></section>';
+		echo '<section class="client-logos row row--3"><div class="wrap">' . do_shortcode('[wpv-view name="client-carousel"]') . '</div></section>';
 
 	}
 }

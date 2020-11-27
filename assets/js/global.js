@@ -10,19 +10,21 @@ function scollToElem(elem0, elem1){
 
 		event.preventDefault();
 
-		jQuery('.nav-primary').removeClass('nav-primary--open');
-
-		jQuery('.hamburger-menu').removeClass('animate');
-
-		jQuery('#site-header__contact').fadeIn(0);
-
-	    
-	    jQuery('body, html').animate(
+		jQuery('body, html').animate(
 	      {
 	        scrollTop: scrollTop
 	      },
 	      800 //speed
 	    );
+
+		jQuery('.nav-primary').removeClass('nav-primary--open');
+
+		jQuery('.hamburger-menu').removeClass('animate');
+
+		jQuery('#site-header__contact').show();
+
+		jQuery('html,body').removeClass('oh');
+
 	});
 }
 
@@ -98,16 +100,16 @@ function slickSlideLogos(){
 	  autoplaySpeed: 1000,
 	  infinite: true,
 	  speed: 800,
-	  slidesToShow: 10,
-	  slidesToScroll: 5,
+	  slidesToShow: 9,
+	  slidesToScroll: 1,
 	  prevArrow: '<button type="button" class="slick-prev dashicons dashicons-arrow-left"></button>',
 	  nextArrow: '<button type="button" class="slick-next dashicons dashicons-arrow-right"></button>',
 	  responsive: [
 	    {
 	      breakpoint: 1024,
 	      settings: {
-	        slidesToShow: 10,
-	  		slidesToScroll: 5,
+	        slidesToShow: 9,
+	  		slidesToScroll: 1,
 	        infinite: true,
 	        dots: false
 	      }
@@ -154,7 +156,7 @@ function slickSlideLogos(){
 jQuery( document ).ready( function() {
 
 		scollToElem('.home .menu-item--what-we-do > a', '#what-we-do');
-		scollToElem('.home .menu-item--who-we-work-with > a', '#who-we-work-with');
+		scollToElem('.home .menu-item--who-we-work > a', '#who-we-work-with');
 		scollToElem('.home .menu-item--get-in-touch > a', '#get-in-touch');
 		togglePrimNav();
 		hamburgerAnim();

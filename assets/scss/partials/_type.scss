@@ -132,7 +132,7 @@ h1 {
 	line-height: 1.15;
 
 	.home & {
-		max-width:60%;
+		max-width:53%;
 
 		@media (max-width: 768px){
 			max-width:80%;
@@ -159,51 +159,7 @@ h6 {
 
 /*----------  Site Header  ----------*/
 
-.site-title {
-	margin: 0 16px 0 0;
-	overflow: hidden;
 
-	@media (min-width: 600px){
-    	margin: 0 24px 0 0;
-    }
-
-	a {
-		background-image: url('images/kalua-logo.png');
-		background-size: contain;
-		background-color: $brand1;
-		background-repeat: no-repeat;
-		background-position: center center;
-		display:block;
-		text-indent: -999em;
-		height: $h1;
-		width: $w1;
-		border: none;
-
-		.home & {
-			width: 60px;
-
-			@media (min-width: 600px){
-    			width: 12vw;
-    			height: 4vw;
-    		}
-
-    		@media (min-width: 2188px) {
-    			width: 278px;
-    			height: 116px;
-    		}
-		}
-
-		.site-header--fixed & {
-			height: $h1;
-			width: calc($h1 / 2);
-			
-
-			@media (min-width: 2188px) {
-    			width: $w1;
-    		}
-		}
-	}
-}
 
 .site-description {
 	display: none;

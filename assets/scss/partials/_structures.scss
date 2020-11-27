@@ -70,6 +70,11 @@
 		padding-top:0;
 		padding-bottom:0;
 	}
+
+	&--3 {
+		padding-top: calc((10px + 1.2vw) * 1);
+		padding-bottom: calc((10px + 1.2vw) * 0.5);
+	}
 }
 
 .intro-home {
@@ -105,7 +110,7 @@
 
 	&__list-item{
 		margin:0;
-		
+
 		@media (min-width: 400px){
 			margin: 0 30px 0 0;
 		}
@@ -149,16 +154,27 @@
 		position: relative;
 		text-align: left;
 		color: $default;
+		margin-bottom: 2.5rem;
+
+		&:last-child{
+			margin-bottom:0;
+		}
 
 		@media (min-width: 768px){
 			width:31%;
+			margin-bottom: 0;
 		}
 	}
 
 	&__img{
 		position: relative;
 		right: -5%;
-    	top: -5%;
+    	top: -20px;
+    	width:100%;
+
+    	@media (min-width:768px){
+			top: -5%;
+		}
 	}
 
 	&__txt{
@@ -184,9 +200,14 @@
 
 	&__listen {
 		padding-top: calc((10px + 1.2vw) * 1);
+		width: auto;
+    	display: inline-block;
 
 		&__cta {
 			color: white;
+			display: flex;
+		    align-items: center;
+		    justify-content: center;
 		}
 		
 	}
@@ -204,10 +225,14 @@
 	}
 
 	&__list-item{
-		width: 27%;
+		width: 47%;
     	margin: 0 1.5% 3%;
 
     	@media (min-width:600px) {
+    		width: 27%;
+    	}
+
+    	@media (min-width:769px) {
     		width: 17%;
     	}
 	}
@@ -228,8 +253,13 @@
 		background-color: gray;
 		color: white;
 		text-align: center;
-		padding: 10px;
+		padding: 30px 15px 20px 15px;
 		transition: all .3s;
+
+		p {
+			line-height: 1.15;
+			font-size: 0.8rem;
+		}
 
 		&.open {
 			left:0;
@@ -242,10 +272,10 @@
 		body.js & {
 			position:absolute;
 			top:0;
-			right:0;
+			right:2px;
 			display:block;
-			width: 19px;
-			height: 19px;
+			width: 24px;
+			height: 24px;
 			border:0;
 			padding: 2px;
 		    line-height: 1;
@@ -263,9 +293,14 @@
 		color: white;
 	}
 
+	> div > p:last-of-type {
+		font-family: $fontHeading;
+	}
+
 	&__list {
 		display:flex;
 		flex-direction:column;
+		margin-top: 3rem;
 
 		@media (min-width:768px){
 			flex-direction:row;
@@ -279,20 +314,31 @@
 		position: relative;
 		text-align: left;
 		color: $default;
+		margin-bottom: 2.5rem;
 
 		@media (min-width:768px){
 			width:46%;
+			margin-bottom: 0;
 		}
 	}
 
 	&__img{
 		position: relative;
 		right: -5%;
-    	top: -5%;
+    	top: -20px;
+    	width: 100%;
+
+    	@media (min-width:768px){
+			top: -5%;
+		}
 	}
 
 	&__address{
 		padding: 0 5% 5%;
+
+		> address > p:first-child{
+			margin-bottom: 0.5em;
+		}
 	}
 }
 
@@ -515,6 +561,7 @@
 	&--fixed {
 		position: fixed;
 		top:0;
+		height: $h1_1;
 		width:100%;
 		animation-duration: .5s;
   		animation-name: slidein;
@@ -538,6 +585,66 @@
 	}
 }
 
+.site-header--fixed .site-header__contact {
+    padding: 10px 0 0;
+}
+
+
+.site-title {
+	margin: 0 16px 0 0;
+	overflow: hidden;
+
+	@media (min-width: 600px){
+    	margin: 0 24px 0 0;
+    }
+
+	a {
+		background-image: url('images/kalua-logo.png');
+		background-size: contain;
+		background-color: $brand1;
+		background-repeat: no-repeat;
+		background-position: center center;
+		display:block;
+		text-indent: -999em;
+		height: $h1;
+		width: $h1;
+		border: none;
+
+		@media (min-width: 600px){
+    		width: $w1;
+    	}
+
+    	@media (min-width: 2188px) {
+    		width: 278px;
+    	}
+
+		/*
+		.home & {
+			width: 60px;
+
+			@media (min-width: 600px){
+    			width: 12vw;
+    			height: 4vw;
+    		}
+
+    		@media (min-width: 2188px) {
+    			width: 278px;
+    			height: 116px;
+    		}
+		}
+		*/
+
+		.site-header--fixed & {
+			height: $h1_1;
+			//width: calc($h1 / 2);
+			
+
+			@media (min-width: 2188px) {
+    			width: $w1;
+    		}
+		}
+	}
+}
 
 
 .admin-bar .site-header {
@@ -590,8 +697,8 @@
 
 .anchor {
     display: block;
-    height: $h1;
-    margin-top: -$h1;
+    height: $h1_1;
+    margin-top: -$h1_1;
     background-color: red;
     visibility: hidden;
     line-height:0;
@@ -628,6 +735,10 @@
 	font-size: 25px;
 	color: white;
 	vertical-align: middle;
+
+	&--2 {
+		background-color: orange;
+	}
 
 	&:before{
 		display:block;

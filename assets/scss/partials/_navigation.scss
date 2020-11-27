@@ -97,7 +97,7 @@
 		z-index:2;
 		left: -100%;
 		right: 100%;
-		top: 60px;
+		top: 0;
 		bottom:0;
 		background: black;
 		display:flex;
@@ -250,6 +250,10 @@
 	cursor: pointer;
 	background: transparent;
     border: 0;
+
+    .site-header--fixed & {
+    	top:12px;
+    }
 
 	/*
 
