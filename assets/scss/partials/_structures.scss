@@ -204,6 +204,13 @@
 		padding: 8px 20px;
 		background: $brand4;
 		color: $default;
+		transition: all .3s;
+
+		&:hover {
+		    background: $brand4_1;
+		    color: white;
+		}
+
 	}
 
 	&__listen {
@@ -216,6 +223,8 @@
 			display: flex;
 		    align-items: center;
 		    justify-content: center;
+		    font-family: $fontHeading;
+    		font-size: 1.3em;
 		}
 		
 	}
@@ -550,6 +559,7 @@
 	text-transform: uppercase;
 	font-weight:700;
 	font-size: 0.7rem;
+	transition: all .3s;
 
 	@media (min-width: 400px){
 		padding: 12px 14px;
@@ -565,6 +575,12 @@
 	font-weight:700;
 	font-size: 0.7rem;
 	font-family: $fontBody;
+	transition: all .3s;
+
+	&:hover {
+	    background-color: $brand1_2;
+	}
+
 }
 
 // Slick extra classes

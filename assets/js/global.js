@@ -6,16 +6,14 @@ function scollToElem(elem0, elem1){
 
 		var scrollTop = jQuery(elem1).offset().top;
 
-		// console.log(scrollTop, jQuery(elem1).offset().top );
-
-		event.preventDefault();
-
+		/* Not needed if scroll-behavior: smooth; in css
 		jQuery('body, html').animate(
 	      {
 	        scrollTop: scrollTop
 	      },
-	      800 //speed
+	      '100' //speed
 	    );
+	    */
 
 		jQuery('.nav-primary').removeClass('nav-primary--open');
 
@@ -24,6 +22,8 @@ function scollToElem(elem0, elem1){
 		jQuery('#site-header__contact').show();
 
 		jQuery('html,body').removeClass('oh');
+
+		//event.preventDefault();
 
 	});
 }
@@ -155,29 +155,31 @@ function slickSlideLogos(){
 
 function setHeight(){
 
-	var windowH = window.innerHeight,
+	var windowH = window.innerHeight;
+
+	if ( ( windowH > 660 ) && ( jQuery('.home').length ) ){
+
 		headerH = jQuery('.site-header').height(),
 		logoRowH = jQuery('.client-logos').height(),
 		introHome = jQuery('.intro-home > .wrap'),
 		height = windowH - ( headerH + logoRowH ),
 		introHome2 = document.getElementById('intro-home');
 
-	var introHomeP = document.getElementById('intro-home');
-	var clientLogoRow = document.getElementById('client-logos');
+		var introHomeP = document.getElementById('intro-home');
+		var clientLogoRow = document.getElementById('client-logos');
 
-	var introHomeTPF = parseFloat( window.getComputedStyle(introHomeP, null).getPropertyValue('padding-top') );
-	var logoRowTPF = parseFloat( window.getComputedStyle(clientLogoRow, null).getPropertyValue('padding-top') );
-	var logoRowBPF = parseFloat( window.getComputedStyle(clientLogoRow, null).getPropertyValue('padding-bottom') );
+		var introHomeTPF = parseFloat( window.getComputedStyle(introHomeP, null).getPropertyValue('padding-top') );
+		var logoRowTPF = parseFloat( window.getComputedStyle(clientLogoRow, null).getPropertyValue('padding-top') );
+		var logoRowBPF = parseFloat( window.getComputedStyle(clientLogoRow, null).getPropertyValue('padding-bottom') );
 
-	if ( windowH > 660 ){
 		introHome.height( windowH - ( headerH + logoRowH + logoRowTPF + logoRowBPF + (introHomeTPF * 2) ) );
 	}
 		
 }
 
-jQuery( document ).ready( function() {
-		
-		scollToElem('.home .menu-item--what-we-do > a', '#what-we-do');
+var onDocReady = function(){
+
+	scollToElem('.home .menu-item--what-we-do > a', '#what-we-do');
 		scollToElem('.home .menu-item--who-we-work > a', '#who-we-work-with');
 		scollToElem('.home .menu-item--get-in-touch > a', '#get-in-touch');
 		togglePrimNav();
@@ -186,6 +188,11 @@ jQuery( document ).ready( function() {
 		hideElem();
 		slickSlideLogos();
 		setHeight();
+}
+
+jQuery( document ).ready( function() {
+		
+		onDocReady();
 });
 
 jQuery(window).on('scroll', function(){

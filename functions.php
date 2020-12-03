@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.57' );
+define( 'CHILD_THEME_VERSION', '0.59' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -292,6 +292,8 @@ function who_we_work_with_homepage(){
 		echo '<section class="who-we-work-with row"><div class="wrap">';
 
 			echo '<h2>' . types_render_field( 'client-brands-title-home', array() ) . '</h2>';
+
+			echo types_render_field( 'client-brands-text-home', array() );
 
 			echo '<div class="who-we-work-with__list-container">' . do_shortcode('[wpv-view name="client-list"]') . '</div>';
 

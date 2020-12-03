@@ -61,6 +61,11 @@ address {
 	}
 }
 
+h2 ~ p {
+	font-size: .75rem;
+    line-height: 1.5;
+}
+
 ol,
 ul {
 	margin: 0;
