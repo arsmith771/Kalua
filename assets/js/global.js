@@ -106,9 +106,9 @@ function slickSlideLogos(){
 	  nextArrow: '<button type="button" class="slick-next dashicons dashicons-arrow-right"></button>',
 	  responsive: [
 	    {
-	      breakpoint: 1024,
+	      breakpoint: 1025,
 	      settings: {
-	        slidesToShow: 9,
+	        slidesToShow: 6,
 	  		slidesToScroll: 1,
 	        infinite: true,
 	        dots: false
@@ -153,8 +153,30 @@ function slickSlideLogos(){
 	});
 }
 
-jQuery( document ).ready( function() {
+function setHeight(){
 
+	var windowH = window.innerHeight,
+		headerH = jQuery('.site-header').height(),
+		logoRowH = jQuery('.client-logos').height(),
+		introHome = jQuery('.intro-home > .wrap'),
+		height = windowH - ( headerH + logoRowH ),
+		introHome2 = document.getElementById('intro-home');
+
+	var introHomeP = document.getElementById('intro-home');
+	var clientLogoRow = document.getElementById('client-logos');
+
+	var introHomeTPF = parseFloat( window.getComputedStyle(introHomeP, null).getPropertyValue('padding-top') );
+	var logoRowTPF = parseFloat( window.getComputedStyle(clientLogoRow, null).getPropertyValue('padding-top') );
+	var logoRowBPF = parseFloat( window.getComputedStyle(clientLogoRow, null).getPropertyValue('padding-bottom') );
+
+	if ( windowH > 660 ){
+		introHome.height( windowH - ( headerH + logoRowH + logoRowTPF + logoRowBPF + (introHomeTPF * 2) ) );
+	}
+		
+}
+
+jQuery( document ).ready( function() {
+		
 		scollToElem('.home .menu-item--what-we-do > a', '#what-we-do');
 		scollToElem('.home .menu-item--who-we-work > a', '#who-we-work-with');
 		scollToElem('.home .menu-item--get-in-touch > a', '#get-in-touch');
@@ -163,6 +185,7 @@ jQuery( document ).ready( function() {
 		showElem();
 		hideElem();
 		slickSlideLogos();
+		setHeight();
 });
 
 jQuery(window).on('scroll', function(){

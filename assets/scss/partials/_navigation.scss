@@ -241,7 +241,7 @@
 
 .menu-wrapper {
 	position: absolute;
- 	top: 22px;
+ 	top: 16px;
   	right: 7%;
   	margin: 0;
     padding: 0;
@@ -250,6 +250,10 @@
 	cursor: pointer;
 	background: transparent;
     border: 0;
+
+     @media (min-width: 768px){
+     	top: 22px;
+     }
 
     .site-header--fixed & {
     	top:12px;

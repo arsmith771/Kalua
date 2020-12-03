@@ -22,7 +22,11 @@
 }
 
 .wrap2 {
-	padding:0 7% 0 0;
+	padding:0;
+
+	@media (min-width: 768px){
+		padding:0 7% 0 0;
+	}
 
 	@media (min-width: 2188px) {
 		max-width: 1920px;
@@ -83,7 +87,7 @@
 	background-position: center center;
 
 	> .wrap {
-		min-height: 75vh;
+		//min-height: 75vh;
 		display: flex;
 	    flex-direction: column;
 	    justify-content: center;
@@ -140,7 +144,7 @@
 	&__list {
 		display:flex;
 		justify-content: space-between;
-		padding-top: 25px;
+		padding-top: 35px;
 		flex-direction: column;
 
 		@media (min-width: 768px){
@@ -180,6 +184,10 @@
 	&__txt{
 		padding: 0 5% 5%;
 		color: $default;
+
+		p{
+			line-height: 1.45;
+		}
 	}
 
 	&__title{
@@ -191,7 +199,7 @@
 
 	&__cta{
 		text-transform: uppercase;
-		font-size: .7rem;
+		font-size: .6rem;
 		display:inline-block;
 		padding: 8px 20px;
 		background: $brand4;
@@ -253,12 +261,12 @@
 		background-color: gray;
 		color: white;
 		text-align: center;
-		padding: 30px 15px 20px 15px;
+		padding: 26px 15px 20px 15px;
 		transition: all .3s;
 
 		p {
 			line-height: 1.15;
-			font-size: 0.8rem;
+			font-size: 0.6rem;
 		}
 
 		&.open {
@@ -320,6 +328,10 @@
 			width:46%;
 			margin-bottom: 0;
 		}
+
+		p{
+			line-height: 1.45;
+		}
 	}
 
 	&__img{
@@ -352,14 +364,27 @@
 		
 
 		&__img {
-			min-width: 65%;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center center;
+			display:none;
+
+			@media (min-width: 768px){
+				display:block;
+				min-width: 65%;
+			}
 		}
 
 		&__txt{
-			padding: 7% 0 7% 3.6%;
+			padding: 7%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+
+			@media (min-width: 768px){
+				background-size: 0 0;
+				padding: 7% 0 7% 3.6%;
+			}
 
 			p{
 				font-size:2rem;
@@ -376,9 +401,8 @@
 	overflow: hidden;
 	background-color: $brand3;
 
-	> .wrap {
-		position: relative;
-		z-index:1;
+	> div {
+		position: relative;;
 	}
 
 	&:before,
@@ -424,6 +448,35 @@
 .services-2-radio {
 	background-color: $brand1;
 	color: white;
+	overflow: hidden;
+
+	> div {
+		position: relative;
+	}
+
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 0;
+		background-color: $brand1_1;
+		width: 467px;
+		height: 467px;
+		
+	}
+
+	&:before{
+		right: 90%;
+    	top: -234px;
+		transform: rotate(45deg);
+	}
+
+	&:after {
+		left: 90%;
+		bottom:-234px;
+		transform: rotate(-45deg);
+	}
 
 	&__list {
 		display:flex;
@@ -435,6 +488,11 @@
 		display:flex;
 		width: 47%;
 		margin-bottom: 4%;
+		flex-direction: column;
+
+		@media (min-width:768px){
+			flex-direction: row;
+		}
 	}
 
 	&__title{
@@ -451,8 +509,12 @@
 	}
 
 	&__img-container{
-		min-width: 150px;
+		min-width: 0;
 		margin: 0 22px 22px 0;
+
+		@media (min-width:768px){
+			min-width: 150px;
+		}
 	}
 }
 
@@ -462,8 +524,11 @@
 	background-position: center center;
 
 	&__content {
-		float: right;
-    	width: 31%;
+
+    	@media (min-width:768px){
+			float: right;
+    		width: 31%;
+		}
 	}
 }
 
@@ -487,7 +552,7 @@
 	font-size: 0.7rem;
 
 	@media (min-width: 400px){
-		padding: 15px 24px;
+		padding: 12px 14px;
 	}
 }
 
@@ -563,8 +628,11 @@
 		top:0;
 		height: $h1_1;
 		width:100%;
-		animation-duration: .5s;
-  		animation-name: slidein;
+		
+  		@media (min-width: 1025px) {
+			animation-duration: .7s;
+  			animation-name: slidein;
+		}
 
 		.admin-bar & {
 			top:32px;
@@ -586,7 +654,12 @@
 }
 
 .site-header--fixed .site-header__contact {
-    padding: 10px 0 0;
+    padding: 4px 0 0;
+
+    @media (min-width: 768px){
+    	padding: 10px 0 0;
+    }
+
 }
 
 
@@ -646,6 +719,13 @@
 	}
 }
 
+.home .site-title a {
+	height:90px;
+}
+
+.home .site-header--fixed .site-title a {
+	height:50px;
+}
 
 .admin-bar .site-header {
 	//top: 46px;

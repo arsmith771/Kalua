@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.52' );
+define( 'CHILD_THEME_VERSION', '0.57' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -233,7 +233,7 @@ function intro_homepage(){
 
 	if ( is_page_template( 'templates/homepage.php') ){
 
-		echo '<section class="intro-home row"><div class="wrap">';
+		echo '<section class="intro-home row" id="intro-home"><div class="wrap">';
 
 			echo '<h1 class="intro-home__title"><span>' . types_render_field( 'intro-header-1-home', array() ) . '</span> ' . types_render_field( 'intro-header-2-home', array() ) . '</h1>';
 
@@ -251,7 +251,7 @@ function client_carousel_homepage(){
 
 	if ( is_page_template( 'templates/homepage.php') ){
 
-		echo '<section class="client-logos row row--3"><div class="wrap"><p class="client-logos__intro">Where you&apos;ll hear our work</p>' . do_shortcode('[wpv-view name="client-carousel"]') . '</div></section>';
+		echo '<section class="client-logos row row--3" id="client-logos"><div class="wrap"><p class="client-logos__intro">Where you&apos;ll hear our work</p>' . do_shortcode('[wpv-view name="client-carousel"]') . '</div></section>';
 
 	}
 }
@@ -326,6 +326,16 @@ function get_in_touch_homepage(){
 
 // ------------------------------- Radio page --------------------------------------------
 
+// Add style tag for main image
+add_action( 'wp_head', 'main_image_radio' );
+function main_image_radio() {
+
+	 if ( is_page_template( 'templates/radio.php') ){
+
+	    echo '<style>.intro-radio__content__img, .intro-radio__content__txt {background-image: url(' . types_render_field( 'intro-image-radio', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .intro-radio__content__img {background-image: url(' . types_render_field( 'intro-image-radio', array("url" => "true") ) . ');}}</style>';
+	}
+}
+
 // Intro section
 add_action('genesis_entry_content', 'intro_radio', 10 );
 function intro_radio(){
@@ -336,7 +346,7 @@ function intro_radio(){
 
 			echo '<div class="intro-radio__content wrap2">';
 
-				echo '<div class="intro-radio__content__img" style="background-image: url(' . types_render_field( 'intro-image-radio', array("url" => "true") ) . ');"></div>';
+				echo '<div class="intro-radio__content__img"></div>';
 
 				echo '<div class="intro-radio__content__txt">' . types_render_field( 'intro-text-radio', array() ) . '</div>';
 
