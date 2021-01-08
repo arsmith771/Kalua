@@ -9,6 +9,11 @@
 	background: $brand2;
 	color: white;
 	padding: 15px 0;
+	text-align:center;
+
+	@media (min-width: 768px){
+		text-align: left;
+	}
 
 	> .wrap {
 
@@ -18,9 +23,15 @@
 		    align-items: center;
 		    margin: 0;
 			clear: both;
+			justify-content: center;
 
-			@media (min-width: 880px){
+			@media (min-width: 768px){
+				justify-content: left;
+			}
+
+			@media (min-width: 1060px){
 				clear:none;
+
 			}
 		}
 	}
@@ -33,8 +44,11 @@
 	}
 
 	&__cta{
-		float:left;
-		margin-right: 60px;
+
+		@media (min-width: 768px){
+			float:left;
+			margin-right: 60px;
+		}
 
 		i {
 			background: orange;
@@ -44,11 +58,16 @@
 			color: white;
 			line-height: 50px;
 			display:inline-block;
+			font-size: .7rem;
+			font-family: $fontHeading;
 		}
 	}
 
 	&__social-icons{
-		float: right;
+		
+		@media (min-width: 768px){
+			float: right;
+		}
 
 		li {
 			

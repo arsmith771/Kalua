@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.59' );
+define( 'CHILD_THEME_VERSION', '0.7' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -49,6 +49,7 @@ include_once( get_template_directory() . '/lib/init.php');
 
 //------------------------- Image sizes -------------
 add_image_size( 'thumb-1', 280, 230, true ); // width, height, crop
+add_image_size( 'thumb-2', 400, 300, true ); // width, height, crop
 add_image_size( 'banner-mobile', 820, 820, true ); // width, height, crop
 /*
 add_image_size( 'thumb-1', 400, 300, true ); // width, height, crop
@@ -130,9 +131,12 @@ function starter_get_responsive_menu_args() {
  */
 add_theme_support( 'genesis-responsive-viewport' ); /* Enable Viewport Meta Tag for Mobile Devices */
 add_theme_support( 'html5',  array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) ); /* HTML5 */
-add_theme_support( 'genesis-accessibility', array( 'skip-links', 'search-form', 'drop-down-menu', 'headings' ) ); /* Accessibility */
+add_theme_support( 'genesis-accessibility', array( 'skip-links', 'search-form', 'headings' ) ); /* Accessibility */
 add_theme_support( 'genesis-after-entry-widget-area' ); /* After Entry Widget Area */
 add_theme_support( 'genesis-footer-widgets', 3 ); /* Add Footer Widgets Markup for 3 */
+
+// Deactivate superfish menu feature
+apply_filters( 'genesis_superfish_enabled', false );
 
 
 /**
@@ -167,6 +171,12 @@ include_once( get_stylesheet_directory() . '/lib/attributes.php' );
 
 
 //------------------------------- KALUA -----------------------------
+
+//----------------------  Admin css -----------------------
+add_action('admin_enqueue_scripts', 'admin_styles');
+function admin_styles() {
+    wp_enqueue_style('backend-admin', get_stylesheet_directory_uri() . '/admin.css');
+}
 
 // Custom menu shortcode 
 add_shortcode('menu', 'print_menu_shortcode');
@@ -418,7 +428,7 @@ function services_2_radio(){
 
 			echo '<div class="wrap3"><h2 class="services-2-radio__title">' . types_render_field( 'services-list-title-radio', array() ) . '</h2></div>';
 
-			echo '<div class="wrap">' . do_shortcode('[wpv-view name="services-list"]') . '</div>';
+			echo '<div class="wrap4">' . do_shortcode('[wpv-view name="services-list"]') . '</div>';
  
 		echo '</section>'; 
 	}
@@ -459,6 +469,47 @@ function get_in_touch_radio(){
 		echo '</div></section>'; 
 	}
 }
+
+// ------------------------------- Podcast page --------------------------------------------
+
+// Add style tag for main image
+add_action( 'genesis_entry_content', 'standfirst_podcast', 10 );
+function standfirst_podcast() {
+
+	 if ( is_page_template( 'templates/podcast.php') ){
+
+	  echo '<section class="standfirst-podcast row" ><div class="wrap4">';
+
+	  	echo  types_render_field( 'standfirst-podcast', array() );
+	  
+	  echo '</div></section>';
+	}
+}
+
+// Add style tag for main image
+add_action( 'wp_head', 'main_image_podcast' );
+function main_image_podcast() {
+
+	 if ( is_page_template( 'templates/podcast.php') ){
+
+	 	echo '<style>.infographic-podcast {background-image: url(' . types_render_field( 'main-image-podcast', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .infographic-podcast {background-image: url(' . types_render_field( 'main-image-podcast', array("url" => "true") ) . ');}}</style>';
+	}
+}
+
+// Infographic section
+add_action('genesis_entry_content', 'infographic_podcast', 11 );
+function infographic_podcast(){
+
+	if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="infographic-podcast row"><div class="wrap4">';
+
+			echo '<div class="infographic-podcast__content">' . types_render_field( 'infographic-podcast-content', array() ) .'</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
 
 // ------------------------------- Footer --------------------------------------------
 

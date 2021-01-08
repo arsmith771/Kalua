@@ -14,10 +14,7 @@
 	padding:0 7%;
 
 	@media (min-width: 2188px) {
-		max-width: 1920px;
-		margin-left:auto;
-		margin-right: auto;
-		padding: 0;
+		padding: 0 12%;
 	}
 }
 
@@ -45,6 +42,21 @@
 
 	@media (min-width: 2188px) {
 		max-width: 1000px;
+		margin-left:auto;
+		margin-right: auto;
+		padding: 0;
+	}
+}
+
+.wrap4 {
+	padding:0 7%;
+
+	@media (min-width: 768px) {
+		padding:0 15%;
+	}
+
+	@media (min-width: 2188px) {
+		max-width: 1800px;
 		margin-left:auto;
 		margin-right: auto;
 		padding: 0;
@@ -514,7 +526,8 @@
 	}
 
 	&__txt p {
-		font-size: .8rem;
+		font-size: .65rem;
+    	line-height: .9rem;
 	}
 
 	&__img-container{
@@ -522,7 +535,7 @@
 		margin: 0 22px 22px 0;
 
 		@media (min-width:768px){
-			min-width: 150px;
+			min-width: 100px;
 		}
 	}
 }
@@ -549,6 +562,29 @@
 
 	a{
 		color: white;
+	}
+}
+
+.standfirst-podcast {
+	background-color: $brand1;
+	color: white;
+
+	p{
+		font-family: $fontHeading;
+		font-size: 1.4rem;
+    	line-height: 1.4;
+	}
+}
+
+.infographic-podcast {
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: right center;
+
+	&__content{
+		background: rgba(255,255,255,0.5);
+		padding: 2rem;
+		width: 50%;
 	}
 }
 
@@ -647,7 +683,7 @@
 		
   		@media (min-width: 1025px) {
 			animation-duration: .7s;
-  			animation-name: slidein;
+  			//animation-name: slidein;
 		}
 
 		.admin-bar & {
