@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.7' );
+define( 'CHILD_THEME_VERSION', '0.705' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -49,6 +49,7 @@ include_once( get_template_directory() . '/lib/init.php');
 
 //------------------------- Image sizes -------------
 add_image_size( 'thumb-1', 280, 230, true ); // width, height, crop
+add_image_size( 'thumb-1-1', 350, 290, true ); // width, height, crop
 add_image_size( 'thumb-2', 400, 300, true ); // width, height, crop
 add_image_size( 'banner-mobile', 820, 820, true ); // width, height, crop
 /*
@@ -510,18 +511,187 @@ function infographic_podcast(){
 	}
 }
 
+// Content 1
+add_action('genesis_entry_content', 'content_1_podcast', 12 );
+function content_1_podcast(){
+
+	if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="content-1-podcast row"><div class="wrap3">';
+
+			echo '<div class="content-1-podcast__content">' . types_render_field( 'content-1-podcast', array() ) .'</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+
+// Services
+add_action('genesis_entry_content', 'services_podcast', 13 );
+function services_podcast(){
+
+	if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="services-podcast row">';
+
+			echo '<div class="wrap3"><h2 class="services-podcast__title">' . types_render_field('services-section-title-pod', array() ) . '</h2></div>';
+
+			echo '<div class="wrap4"><div class="services-podcast__content">' . do_shortcode('[wpv-view name="services-list-2"]') . '</div></div>';
+
+		echo '</section>'; 
+	}
+}
+
+// Content 2
+add_action('genesis_entry_content', 'content_2_podcast', 14 );
+function content_2_podcast(){
+
+	if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="content-2-podcast row row--4" style="background-image: url(' . types_render_field( 'content-row-2-background', array("url" => "true") ) . ')"><div class="wrap3">';
+
+			echo '<div class="content-2-podcast__content">' . types_render_field( 'content-row-2-text', array() ) .'</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+// Content 3
+add_action('genesis_entry_content', 'content_3_podcast', 15 );
+function content_3_podcast(){
+
+	if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="content-3-podcast row"><div class="wrap4">';
+
+			echo '<h2 class="content-3-podcast__title">' . types_render_field( 'content-3-title-pod', array() ) . '</h2>';
+
+			echo '<div class="content-3-podcast__content">';
+
+				echo '<div class="content-3-podcast__images">' . types_render_field( 'content-row-3-img-pod', array() ) . '</div>';
+
+				echo '<div class="content-3-podcast__text">' . types_render_field( 'content-row-3-text-pod', array() ) . '</div>';
+
+			echo '</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+// Content 4
+add_action('genesis_entry_content', 'content_4_podcast', 16 );
+function content_4_podcast(){
+
+	if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="content-4-podcast row"><div class="wrap4">';
+
+			echo '<div class="content-4-podcast__content">';
+
+				echo types_render_field( 'content-row-4-pod', array() );
+
+			echo '</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+
+// ------------------------------- About page --------------------------------------------
+
+// Main intro
+add_action( 'genesis_entry_content', 'intro_about', 10 );
+function intro_about() {
+
+	 if ( is_page_template( 'templates/about.php') ){
+
+	  echo '<section class="intro-about row" style="background-image:url(' . types_render_field( 'about-intro-image', array("url" => "true") ) . ');"><div class="wrap4">';
+
+	  	echo '<div class="intro-about__content"><div class="intro-about__txt">' . types_render_field( 'intro-text-about', array() ) . '</div></div>';
+	  
+	  echo '</div></section>';
+	}
+}
+
+// Content row 1
+add_action( 'genesis_entry_content', 'content_1_about', 11 );
+function content_1_about() {
+
+	 if ( is_page_template( 'templates/about.php') ){
+
+	  echo '<section class="content-1-about row"><div class="wrap3">';
+
+	  	echo '<div class="content-1-about__content">' . types_render_field( 'content-row-1-about', array() ) . '</div>';
+	  
+	  echo '</div></section>';
+	}
+}
+
+
+// Content row 2
+add_action( 'genesis_entry_content', 'content_2_about', 12 );
+function content_2_about() {
+
+	 if ( is_page_template( 'templates/about.php') ){
+
+	  echo '<section class="content-2-about row"><div class="wrap3">';
+
+	  	echo '<div class="content-2-about__content">';
+
+	  		echo '<div class="content-2-about__col-1">' . types_render_field( 'content-row-2-col-1-about', array() ) . '</div>';
+
+	  		echo '<div class="content-2-about__col-2">' . types_render_field( 'content-row-2-col-2-about', array() ) . '</div>';
+	  
+	  	echo '</div>';
+
+	  echo '</div></section>';
+	}
+}
+
+// Content row 3
+add_action('genesis_entry_content', 'content_3_about', 13 );
+function content_3_about(){
+
+	if ( is_page_template( 'templates/about.php') ){
+
+		echo '<section class="content-3-about row row--4" style="background-image: url(' . types_render_field( 'content-row-3-about-bg', array("url" => "true") ) . ')"><div class="wrap3">';
+
+			echo '<div class="content-3-about__content">' . types_render_field( 'content-row-3-about-text', array() ) .'</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+// Get in touch section
+add_action('genesis_entry_content', 'get_in_touch_about', 14 );
+function get_in_touch_about(){
+
+	if ( is_page_template( 'templates/about.php') ){
+
+		echo '<section class="get-in-touch-home row"><div class="wrap3">';
+
+			echo '<h2>' . types_render_field( 'get-in-touch-title-home', array("id" => "15") ) .  '</h2>';
+
+			echo types_render_field( 'get-in-touch-text2-home', array("id" => "15") );  
+
+			echo do_shortcode('[wpv-view name="get-in-touch-blocks"]');
+
+
+		echo '</div></section>'; 
+	}
+}
 
 // ------------------------------- Footer --------------------------------------------
 
 // Footer cta
-add_action('genesis_footer', 'footer_cta', 8 );
+add_action('genesis_footer', 'footer_cta', 11 );
 function footer_cta(){
 
 	echo '<div class="site-footer__cta"><p><a href="https://soundcloud.com/kaluastudios" target="_blank"><i class="fab fa-soundcloud icon"></i> Listen to our work on <span class="tdu">Soundcloud</span></a>.</p></div>';
 }
 
 // Footer social icons
-add_action('genesis_footer', 'social_icon_menu_footer', 9 );
+add_action('genesis_footer', 'social_icon_menu_footer', 12 );
 function social_icon_menu_footer(){
 
 	echo '<div class="site-footer__social-icons">' . do_shortcode('[menu name="social-icons"]') . '</div>';
