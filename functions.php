@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.705' );
+define( 'CHILD_THEME_VERSION', '0.708' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -408,7 +408,7 @@ function accreditation_radio(){
 
 			echo '<div class="dFlex dFlex--vcenter">';
 
-				echo types_render_field( 'accreditation-logo-radio', array("size" => "thumbnail", "alt" => "Radio
+				echo types_render_field( 'accreditation-logo-radio', array("alt" => "Radio
 	Centre Trustmark logo", "class" => "accreditation-radio__img") );
 
 				echo types_render_field( 'accreditation-text-radio', array() ); 
