@@ -55,7 +55,13 @@
 			margin-right: 60px;
 		}
 
-		i {
+		i:first-child {
+			position:relative;
+			top:2px;
+			margin:0 5px;
+		}
+
+		i:nth-child(2) {
 			background: orange;
 		}
 

@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.708' );
+define( 'CHILD_THEME_VERSION', '0.87' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -246,7 +246,7 @@ function intro_homepage(){
 
 		echo '<section class="intro-home row" id="intro-home"><div class="wrap">';
 
-			echo '<h1 class="intro-home__title"><span>' . types_render_field( 'intro-header-1-home', array() ) . '</span> ' . types_render_field( 'intro-header-2-home', array() ) . '</h1>';
+			echo '<h1 class="intro-home__title"><div class="intro-home__title__deco"><span>' . types_render_field( 'intro-header-1-home', array() ) . '</span><br> ' . types_render_field( 'intro-header-2-home', array() ) . '</div></h1>';
 
 			echo '<ul class="intro-home__list"><li class="intro-home__list-item"><a href="/radio" class="cta-1">Radio</a></li><li class="intro-home__list-item"><a href="/podcasts" class="cta-1">Podcasts</a></li><li class="intro-home__list-item"><a href="/digital" class="cta-1">Digital</a></li></ul>';
 
@@ -361,7 +361,7 @@ function intro_radio(){
 
 				echo '<div class="intro-radio__content__img"></div>';
 
-				echo '<div class="intro-radio__content__txt">' . types_render_field( 'intro-text-radio', array() ) . '</div>';
+				echo '<div class="intro-radio__content__txt intro-radio__content__txt--radio">' . types_render_field( 'intro-text-radio', array() ) . '</div>';
 
 			echo '</div>';
 
@@ -473,7 +473,8 @@ function get_in_touch_radio(){
 
 // ------------------------------- Podcast page --------------------------------------------
 
-// Add style tag for main image
+// Add 
+/*
 add_action( 'genesis_entry_content', 'standfirst_podcast', 10 );
 function standfirst_podcast() {
 
@@ -486,6 +487,7 @@ function standfirst_podcast() {
 	  echo '</div></section>';
 	}
 }
+*/
 
 // Add style tag for main image
 add_action( 'wp_head', 'main_image_podcast' );
@@ -493,9 +495,33 @@ function main_image_podcast() {
 
 	 if ( is_page_template( 'templates/podcast.php') ){
 
-	 	echo '<style>.infographic-podcast {background-image: url(' . types_render_field( 'main-image-podcast', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .infographic-podcast {background-image: url(' . types_render_field( 'main-image-podcast', array("url" => "true") ) . ');}}</style>';
+	 	echo '<style>.intro-podcast__content__img, .intro-podcast__content__txt {background-image: url(' . types_render_field( 'main-image-podcast', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .intro-podcast__content__img {background-image: url(' . types_render_field( 'main-image-podcast', array("url" => "true") ) . ');}}</style>';
 	}
 }
+
+
+//
+// Intro section
+add_action('genesis_entry_content', 'intro_podcast', 10 );
+function intro_podcast(){
+
+	 if ( is_page_template( 'templates/podcast.php') ){
+
+		echo '<section class="intro-podcast row row--2" >';
+
+			echo '<div class="intro-podcast__content wrap2-0">';
+
+				echo '<div class="intro-podcast__content__img"></div>';
+
+				echo '<div class="intro-podcast__content__txt">' . types_render_field( 'standfirst-podcast', array() ) . '</div>';
+
+			echo '</div>';
+
+		echo '</section>'; 
+	}
+}
+
+
 
 // Infographic section
 add_action('genesis_entry_content', 'infographic_podcast', 11 );
@@ -503,9 +529,13 @@ function infographic_podcast(){
 
 	if ( is_page_template( 'templates/podcast.php') ){
 
-		echo '<section class="infographic-podcast row"><div class="wrap4">';
+		echo '<section class="infographic-podcast row row--1-2"><div class="wrap4-1">';
 
-			echo '<div class="infographic-podcast__content">' . types_render_field( 'infographic-podcast-content', array() ) .'</div>';
+			echo '<div class="infographic-podcast__content">';
+
+				echo do_shortcode('[wpv-view name="infographs"]');
+
+			echo '</div>';
 
 		echo '</div></section>'; 
 	}
@@ -517,7 +547,7 @@ function content_1_podcast(){
 
 	if ( is_page_template( 'templates/podcast.php') ){
 
-		echo '<section class="content-1-podcast row"><div class="wrap3">';
+		echo '<section class="content-1-podcast row"><div class="wrap4">';
 
 			echo '<div class="content-1-podcast__content">' . types_render_field( 'content-1-podcast', array() ) .'</div>';
 
@@ -596,6 +626,189 @@ function content_4_podcast(){
 	}
 }
 
+// ------------------------------- Digital page --------------------------------------------
+
+// Add style tag for main image
+add_action( 'wp_head', 'main_image_digital' );
+function main_image_digital() {
+
+	 if ( is_page_template( 'templates/digital.php') ){
+
+	    echo '<style>.intro-digital__content__img, .intro-digital__content__txt {background-image: url(' . types_render_field( 'intro-image-digi', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .intro-radio__digital__img {background-image: url(' . types_render_field( 'intro-image-digi', array("url" => "true") ) . ');}}</style>';
+	}
+}
+
+// Add style tag for content row 3 image
+add_action( 'wp_head', 'row_3_image_digital' );
+function row_3_image_digital() {
+
+	 if ( is_page_template( 'templates/digital.php') ){
+
+	    echo '<style>.content-3-digi__img, .content-3-digi__img__txt {background-image: url(' . types_render_field( 'content-row-3-image-digi', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .content-3-digi__img {background-image: url(' . types_render_field( 'content-row-3-image-digi', array("url" => "true") ) . ');}}</style>';
+	}
+}
+
+// Add style tag for content row 3 image
+add_action( 'wp_head', 'row_4_image_digital' );
+function row_4_image_digital() {
+
+	 if ( is_page_template( 'templates/digital.php') ){
+
+	    echo '<style>.content-4-digi__img, .content-4-digi__img__txt {background-image: url(' . types_render_field( 'content-row-4-image-digi', array("url" => "true", "size" => "banner-mobile") ) . ');} @media (min-width: 821px) { .content-4-digi__img {background-image: url(' . types_render_field( 'content-row-4-image-digi', array("url" => "true") ) . ');}}</style>';
+	}
+}
+
+// Intro section
+add_action('genesis_entry_content', 'intro_digital', 10 );
+function intro_digital(){
+
+	if ( is_page_template( 'templates/digital.php') ){
+
+		echo '<section class="intro-digital row row--2" >';
+
+			echo '<div class="intro-digital__content wrap2-0">';
+
+				echo '<div class="intro-digital__content__img"></div>';
+
+				echo '<div class="intro-digital__content__txt">' . types_render_field( 'intro-text-digi', array() ) . '</div>';
+
+			echo '</div>';
+
+		echo '</section>'; 
+	}
+}
+
+// Content row 1
+add_action('genesis_entry_content', 'content_1_digital', 11 );
+function content_1_digital(){
+
+	if ( is_page_template( 'templates/digital.php') ){
+		
+		echo '<section class="content-1-digi row"><div class="wrap4">';
+
+			echo '<h2 class="content-1-digi__title">' . types_render_field( 'content-row-1-title-digi', array() ) . '</h2>';
+
+			echo '<div class="content-1-digi__content">';
+
+				echo '<div class="content-1-digi__content__img">';
+
+					echo types_render_field( 'content-row-1-image-digi', array() );
+					
+				echo '</div>';
+
+				echo '<div class="content-1-digi__content__text">';
+
+					echo types_render_field( 'content-row-1-text-digi', array() );
+
+				echo '</div>';
+
+			echo '</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+// Content row 2
+add_action('genesis_entry_content', 'content_2_digital', 12 );
+function content_2_digital(){
+
+	if ( is_page_template( 'templates/digital.php') ){
+		
+		echo '<section class="content-2-digi row"><div class="wrap4">';
+
+			echo '<h2 class="content-2-digi__title">' . types_render_field( 'content-row-2-title-digi', array() ) . '</h2>';
+
+			echo '<div class="content-2-digi__content">';
+
+				echo '<div class="content-2-digi__content__text">';
+
+					echo types_render_field( 'content-row-2-text-digi', array() );
+
+				echo '</div>';
+				
+
+				echo '<div class="content-2-digi__content__img">';
+
+					echo types_render_field( 'content-row-2-image-digi', array() );
+					
+				echo '</div>';
+
+			echo '</div>';
+
+		echo '</div></section>'; 
+	}
+}
+
+// Content row 3
+add_action('genesis_entry_content', 'content_3_digital', 13 );
+function content_3_digital(){
+
+	if ( is_page_template( 'templates/digital.php') ){
+		
+		echo '<section class="content-3-digi row row--2">';
+
+			echo '<div class="content-3-digi__content wrap2-1">';
+
+				echo '<div class="content-3-digi__img"></div>';
+
+				echo '<div class="content-3-digi__txt">';
+
+					echo '<h2 class="content-3-digi__title">' . types_render_field( 'content-row-3-title-digi', array() ) . '</h2>';
+
+					echo types_render_field( 'content-row-3-text-digi', array() );
+
+				echo '</div>';
+
+			echo '</div>';
+
+		echo '</section>';
+	}
+
+}
+
+// Content row 4
+add_action('genesis_entry_content', 'content_4_digital', 14 );
+function content_4_digital(){
+
+	if ( is_page_template( 'templates/digital.php') ){
+		
+		echo '<section class="content-4-digi row row--2">';
+
+			echo '<div class="content-4-digi__content wrap2">';
+
+				echo '<div class="content-4-digi__txt">';
+
+					echo '<h2 class="content-4-digi__title">' . types_render_field( 'content-row-4-title-digi', array() ) . '</h2>';
+
+					echo types_render_field( 'content-row-4-text-digi', array() );
+
+				echo '</div>';
+
+				echo '<div class="content-4-digi__img"></div>';
+
+			echo '</div>';
+
+		echo '</section>';
+	}
+
+}
+
+// Get in touch section
+add_action('genesis_entry_content', 'get_in_touch_digital', 15 );
+function get_in_touch_digital(){
+
+	if ( is_page_template( 'templates/digital.php') ){
+
+		echo '<section class="get-in-touch-digi row"><div class="wrap3">';
+
+			echo '<h2>' . types_render_field( 'get-in-touch-title-digi', array() ) . '</h2>';
+
+			echo types_render_field( 'get-in-touch-text-digi', array() );
+ 
+		echo '</div></section>'; 
+	}
+}
+
 
 // ------------------------------- About page --------------------------------------------
 
@@ -605,7 +818,7 @@ function intro_about() {
 
 	 if ( is_page_template( 'templates/about.php') ){
 
-	  echo '<section class="intro-about row" style="background-image:url(' . types_render_field( 'about-intro-image', array("url" => "true") ) . ');"><div class="wrap4">';
+	  echo '<section class="intro-about row" style="background-image:url(' . types_render_field( 'about-intro-image', array("url" => "true") ) . ');"><div class="wrap2">';
 
 	  	echo '<div class="intro-about__content"><div class="intro-about__txt">' . types_render_field( 'intro-text-about', array() ) . '</div></div>';
 	  
@@ -684,14 +897,14 @@ function get_in_touch_about(){
 // ------------------------------- Footer --------------------------------------------
 
 // Footer cta
-add_action('genesis_footer', 'footer_cta', 11 );
+add_action('genesis_footer', 'footer_cta', 9 );
 function footer_cta(){
 
-	echo '<div class="site-footer__cta"><p><a href="https://soundcloud.com/kaluastudios" target="_blank"><i class="fab fa-soundcloud icon"></i> Listen to our work on <span class="tdu">Soundcloud</span></a>.</p></div>';
+	echo '<div class="site-footer__cta"><p><a href="https://soundcloud.com/kaluastudios" target="_blank">Listen to our work <i class="fas fa-chevron-right"></i> <i class="fab fa-soundcloud icon"></i></a></p></div>';
 }
 
 // Footer social icons
-add_action('genesis_footer', 'social_icon_menu_footer', 12 );
+add_action('genesis_footer', 'social_icon_menu_footer', 11 );
 function social_icon_menu_footer(){
 
 	echo '<div class="site-footer__social-icons">' . do_shortcode('[menu name="social-icons"]') . '</div>';
