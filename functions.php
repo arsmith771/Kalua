@@ -35,7 +35,7 @@ define( 'CHILD_THEME_NAME', 'kalua' );
 define( 'CHILD_THEME_AUTHOR', '' );
 define( 'CHILD_THEME_AUTHOR_URL', '' );
 define( 'CHILD_THEME_URL', '' );
-define( 'CHILD_THEME_VERSION', '0.87' );
+define( 'CHILD_THEME_VERSION', '0.99' );
 define( 'TEXT_DOMAIN', 'kalua' );
 
 /**
@@ -386,7 +386,7 @@ function services_1_radio(){
 
 	if ( is_page_template( 'templates/radio.php') ){
 
-		echo '<section class="services-1-radio row"><div class="wrap3">';
+		echo '<section class="services-1-radio row"><div class="wrap4">';
 
 			echo '<h2 class="services-1-radio__title">' . types_render_field( 'content-row-1-title-radio', array() ) . '</h2>';
 
@@ -529,7 +529,7 @@ function infographic_podcast(){
 
 	if ( is_page_template( 'templates/podcast.php') ){
 
-		echo '<section class="infographic-podcast row row--1-2"><div class="wrap4-1">';
+		echo '<section class="infographic-podcast row row--1-3"><div class="wrap4-1">';
 
 			echo '<div class="infographic-podcast__content">';
 
@@ -594,11 +594,13 @@ function content_3_podcast(){
 
 		echo '<section class="content-3-podcast row"><div class="wrap4">';
 
-			echo '<h2 class="content-3-podcast__title">' . types_render_field( 'content-3-title-pod', array() ) . '</h2>';
+			
 
 			echo '<div class="content-3-podcast__content">';
 
-				echo '<div class="content-3-podcast__images">' . types_render_field( 'content-row-3-img-pod', array() ) . '</div>';
+				echo '<div class="content-3-podcast__images">';
+
+				echo '<h2 class="content-3-podcast__title">' . types_render_field( 'content-3-title-pod', array() ) . '</h2>' . types_render_field( 'content-row-3-img-pod', array() ) . '</div>';
 
 				echo '<div class="content-3-podcast__text">' . types_render_field( 'content-row-3-text-pod', array() ) . '</div>';
 
@@ -684,9 +686,9 @@ function content_1_digital(){
 
 	if ( is_page_template( 'templates/digital.php') ){
 		
-		echo '<section class="content-1-digi row"><div class="wrap4">';
+		echo '<section class="content-1-digi row"><div class="wrap5">';
 
-			echo '<h2 class="content-1-digi__title">' . types_render_field( 'content-row-1-title-digi', array() ) . '</h2>';
+			
 
 			echo '<div class="content-1-digi__content">';
 
@@ -697,6 +699,8 @@ function content_1_digital(){
 				echo '</div>';
 
 				echo '<div class="content-1-digi__content__text">';
+
+					echo '<h2 class="content-1-digi__title">' . types_render_field( 'content-row-1-title-digi', array() ) . '</h2>';
 
 					echo types_render_field( 'content-row-1-text-digi', array() );
 
@@ -714,13 +718,15 @@ function content_2_digital(){
 
 	if ( is_page_template( 'templates/digital.php') ){
 		
-		echo '<section class="content-2-digi row"><div class="wrap4">';
+		echo '<section class="content-2-digi row"><div class="wrap5">';
 
-			echo '<h2 class="content-2-digi__title">' . types_render_field( 'content-row-2-title-digi', array() ) . '</h2>';
+			
 
 			echo '<div class="content-2-digi__content">';
 
 				echo '<div class="content-2-digi__content__text">';
+
+					echo '<h2 class="content-2-digi__title">' . types_render_field( 'content-row-2-title-digi', array() ) . '</h2>';
 
 					echo types_render_field( 'content-row-2-text-digi', array() );
 
@@ -832,7 +838,7 @@ function content_1_about() {
 
 	 if ( is_page_template( 'templates/about.php') ){
 
-	  echo '<section class="content-1-about row"><div class="wrap3">';
+	  echo '<section class="content-1-about row row--1-4"><div class="wrap4">';
 
 	  	echo '<div class="content-1-about__content">' . types_render_field( 'content-row-1-about', array() ) . '</div>';
 	  
@@ -847,7 +853,7 @@ function content_2_about() {
 
 	 if ( is_page_template( 'templates/about.php') ){
 
-	  echo '<section class="content-2-about row"><div class="wrap3">';
+	  echo '<section class="content-2-about row"><div class="wrap5">';
 
 	  	echo '<div class="content-2-about__content">';
 
@@ -867,7 +873,7 @@ function content_3_about(){
 
 	if ( is_page_template( 'templates/about.php') ){
 
-		echo '<section class="content-3-about row row--4" style="background-image: url(' . types_render_field( 'content-row-3-about-bg', array("url" => "true") ) . ')"><div class="wrap3">';
+		echo '<section class="content-3-about row row--4" style="background-image: url(' . types_render_field( 'content-row-3-about-bg', array("url" => "true") ) . ')"><div class="wrap4">';
 
 			echo '<div class="content-3-about__content">' . types_render_field( 'content-row-3-about-text', array() ) .'</div>';
 
