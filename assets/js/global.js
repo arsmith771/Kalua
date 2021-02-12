@@ -73,9 +73,9 @@ function showElem(){
 
 		event.preventDefault();
 
-		jQuery('.who-we-work-with__caption').removeClass('open');
+		//jQuery('.who-we-work-with__caption').removeClass('open');
 
-		jQuery(this).closest('.who-we-work-with__fig').find('.who-we-work-with__caption').addClass('open');
+		//jQuery(this).closest('.who-we-work-with__fig').find('.who-we-work-with__caption').addClass('open');
 
 	});
 }
